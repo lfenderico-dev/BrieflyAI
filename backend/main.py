@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import requests
 from bs4 import BeautifulSoup
+import google.generativeai as genai
 
 app = FastAPI()
 
@@ -33,3 +34,52 @@ def scrapeUrl(url:str):
     }
 
     return result
+
+@app.post("/summarization")
+def AIsummarization(userKey:str, scrapedData:dict):
+    # get scraped data
+        title = scrapedData.get("Title", "")
+        headings = scrapedData.get("Headings", [])
+        paragraphs = scrapedData.get("Paragraphs", [])
+        divs = scrapedData.get("Div", [])
+        
+        allContents = []
+        
+        if title:
+            allContents.append(title)
+        
+        allContents.append(f"Title: {title}")
+        allContents.append("Main headings: " + " ".join(headings))
+        allContents.append("Content: " + " ".join(paragraphs, divs))
+        
+        content = " ".join(allContents)
+        
+        # gemini configuration
+        genai.configure(api_key = userKey)
+        
+        model = genai.GenerativeModel("gemini-1.5-flash")
+        
+        prompt = f"""
+        Analyze this web content and create the most appropriate video summary.
+
+        Instructions:
+        1. Determine what type of content this is
+        2. Structure your response to match that content type
+        3. Make it engaging and suitable for video presentation
+        4. Include visual suggestions relevant to the topic
+        5. Keep it concise but comprehensive
+
+        Always include:
+        - An attention-grabbing title
+        - The main message in simple terms  
+        - 3-5 key points
+        - How to make it visually interesting
+
+        Content to analyze:
+        {content}
+        """
+        
+        # get the summary
+        summary = model.generate_content(prompt)
+        return {"summary": summary}
+        
