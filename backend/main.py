@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 import requests
 from bs4 import BeautifulSoup
-import google.generativeai as genai
+from openai import OpenAI
 
 app = FastAPI()
 
-@app.post("/scraper")
 def scrapeUrl(url:str):
     webpage = requests.get(url)
     scrapedWebpage = BeautifulSoup(webpage.content, "html.parser")
@@ -26,60 +25,34 @@ def scrapeUrl(url:str):
     clearedParagraphContent = cleanContent(paragraphContent)
     clearedDivContent = cleanContent(divContent)
 
-    result = {
-        "Title": title,
-        "Headings": clearedHeadingsContent,
-        "Paragraphs": clearedParagraphContent,
-        "Div": clearedDivContent
-    }
+    result = "".join(clearedHeadingsContent + clearedParagraphContent + clearedDivContent)
 
     return result
 
-@app.post("/summarization")
-def AIsummarization(userKey:str, scrapedData:dict):
-    # get scraped data
-        title = scrapedData.get("Title", "")
-        headings = scrapedData.get("Headings", [])
-        paragraphs = scrapedData.get("Paragraphs", [])
-        divs = scrapedData.get("Div", [])
-        
-        allContents = []
-        
-        if title:
-            allContents.append(title)
-        
-        allContents.append(f"Title: {title}")
-        allContents.append("Main headings: " + " ".join(headings))
-        allContents.append("Content: " + " ".join(paragraphs, divs))
-        
-        content = " ".join(allContents)
-        
-        # gemini configuration
-        genai.configure(api_key = userKey)
-        
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        
-        prompt = f"""
-        Analyze this web content and create the most appropriate video summary.
+def AIsummarization(userKey:str, content:str):
+    prompt = f"""
+    Summarize the following content: {content}
+    """
+    
+    client = OpenAI(
+        base_url="https://openrouter.ai/api/v1",
+        api_key= userKey,
+    )
 
-        Instructions:
-        1. Determine what type of content this is
-        2. Structure your response to match that content type
-        3. Make it engaging and suitable for video presentation
-        4. Include visual suggestions relevant to the topic
-        5. Keep it concise but comprehensive
+    completion = client.chat.completions.create(
+        model="x-ai/grok-4-fast:free",
+        messages=[
+            {
+            "role": "user",
+            "content": prompt
+            }
+        ]
+    )
 
-        Always include:
-        - An attention-grabbing title
-        - The main message in simple terms  
-        - 3-5 key points
-        - How to make it visually interesting
+    return completion.choices[0].message.content
 
-        Content to analyze:
-        {content}
-        """
-        
-        # get the summary
-        summary = model.generate_content(prompt)
-        return {"summary": summary}
-        
+@app.post("/VideoGeneration")
+def generateVideo(userKey:str, url:str):
+    scrapedData = scrapeUrl(url)
+    summary = AIsummarization(userKey, scrapedData)
+    return {"Summary": summary}
