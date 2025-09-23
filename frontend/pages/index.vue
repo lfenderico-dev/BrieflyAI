@@ -13,8 +13,19 @@
             </button>
         </div>
 
-        <div>
-            
+        <div class="h-fit py-12 lg:py-32">
+            <h1 class="mx-auto text-center font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl flex items-center justify-center pb-4 lg:pb-10">
+                <Icon name="fxemoji:down"></Icon>
+                See it in action!
+                <Icon name="fxemoji:down"></Icon>
+            </h1>
+            <video src="/assets/backgrounds/heroBackground.mp4" controls muted class="w-full h-auto object-cover rounded-3xl my-10"></video>
+            <h2 class="mx-auto font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl flex justify-sart pb-4  lg:pb-10">How does that work?</h2>
+            <ul class="text-lg md:text-xl lg:text-2xl xl:text-3xl list-disc mx-4 lg:mx-6">
+                <li>Paste your URL</li>
+                <li>Wait for the AI to process the information</li>
+                <li>Get your result!</li>
+            </ul>
         </div>
     </div>
 </template>
