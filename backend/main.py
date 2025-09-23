@@ -85,8 +85,8 @@ def AIsummarization(userKey:str, content:str):
 
     return completion.choices[0].message.content
 
-@app.post("/VideoGeneration")
-def generateVideo(userKey:str, url:str):
+@app.post("/summaryGeneration")
+def generatesummary(userKey:str, url:str):
     scrapedData = scrapeUrl(url)
     summary = AIsummarization(userKey, scrapedData)
     return {"Summary": summary}
