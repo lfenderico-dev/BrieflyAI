@@ -51,34 +51,8 @@ def AIsummarization(userKey:str, content:str):
 
     return completion.choices[0].message.content
 
-def generateVideo(summary:str):
-    client = Client("Lightricks/ltx-video-distilled")
-    AIVideo = client.predict(
-		prompt=f"Generate a video from this content: {summary}",
-		negative_prompt="worst quality, inconsistent motion, blurry, jittery, distorted",
-		input_image_filepath=None,
-		input_video_filepath=None,
-		height_ui=512,
-		width_ui=704,
-		mode="image-to-video",
-		duration_ui=120,
-		ui_frames_to_use=9,
-		seed_ui=42,
-		randomize_seed=True,
-		ui_guidance_scale=1,
-		improve_texture_flag=True,
-		api_name="/text_to_video"
-    )
-    return AIVideo
-
-
 @app.post("/VideoGeneration")
 def generateVideo(userKey:str, url:str):
     scrapedData = scrapeUrl(url)
     summary = AIsummarization(userKey, scrapedData)
-    AIVideo = generateVideo(summary)
-    
-    return{
-        "Summary": summary,
-        "Video": AIVideo
-    }
+    return {"Summary": summary}
