@@ -1,6 +1,6 @@
 <template>
     <div class="m-4 lg:m-6 overflow-x-hidden">
-        <video src="/media/backgrounds/heroBackground1.mp4" autoplay muted loop playsinline class="object-cover h-[95vh] w-full rounded-3xl"/>
+        <video src="/media/backgrounds/heroBackground.mp4" autoplay muted loop playsinline class="object-cover h-[95vh] w-full rounded-3xl"/>
 
         <div class="absolute z-10 text-center text-white top-10 left-14">
             <h1 class="font-bold text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl italic">NeuroClip</h1>
@@ -20,18 +20,29 @@
 
         </div>
 
-        <div class="h-fit flex flex-col md:flex-row  gap-4 mt-14">
-            <div class="card">
-                <h1 class="font-bold  text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl">
-                    <Icon name="clarity:child-arrow-line"></Icon>
-                    Tired of reading long articles?</h1>
-                <p class="italic text-sm lg:text-lg 2xl:text-xl xl:px-12 2xl:px-16">We can summarize any article in seconds. Perfect for busy professionals and students who need to process information quickly and efficiently.</p>
+        <div class="h-fit flex flex-col md:flex-row gap-4 mt-14">
+            <div class="card md:w-[50%]">
+                <div class="flex flex-row gap-2">
+                    <Icon name="clarity:child-arrow-line" class="text-7xl flex items-start h-10"></Icon>
+                    <div class="flex flex-col gap-2">
+                        <h1 class="font-bold  text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl text-sky-700">
+                    
+                    Tired reading long articles?</h1>
+                    <p class="italic text-sm lg:text-lg 2xl:text-xl xl:px-12 2xl:px-16">We can summarize any article in seconds. Perfect for busy professionals and students who need to process information quickly and efficiently.</p>
+                    </div>
+                </div>
             </div>
-            <div class="card">
-                <h1 class="font-bold  text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl">
-                    <Icon name="clarity:child-arrow-line"></Icon>
+
+            <div class="card md:w-[50%]">
+                <div class="flex flex-row gap-2">
+                    <Icon name="clarity:child-arrow-line" class="text-9xl flex items-start h-10"></Icon>
+                    <div class="flex flex-col gap-2">
+                        <h1 class="font-bold  text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl text-sky-700">
+                    
                     Stop Drowning in Information</h1>
-                <p class="italic text-sm lg:text-lg 2xl:text-xl xl:px-12 2xl:px-16">Tired of bookmarking articles you'll never read? End the endless scroll of overwhelming content that leaves you feeling behind. Our AI cuts through the noise to deliver only what matters, so you can finally tackle that reading list without the guilt or time pressure.</p>
+                    <p class="italic text-sm lg:text-lg 2xl:text-xl xl:px-12 2xl:px-16">Tired of bookmarking articles you'll never read? End the endless scroll of overwhelming content that leaves you feeling behind. Our AI cuts through the noise to deliver only what matters, so you can finally tackle that reading list without the guilt or time pressure.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
