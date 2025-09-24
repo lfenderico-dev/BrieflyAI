@@ -5,3 +5,9 @@
 body {
     @apply bg-neutral-200 text-neutral-950;
 }
+
+@layer component{
+    .card {
+        @apply flex flex-col gap-4 p-6 shadow-xl shadow-neutral-700 rounded-2xl md:w-[50%];
+    }
+}

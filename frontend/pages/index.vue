@@ -1,6 +1,10 @@
 <template>
-    <div class="m-4 lg:m-6">
-        <video src="/media/backgrounds/heroBackground2.mp4" autoplay muted loop playsinline class="object-cover h-[95vh] w-full rounded-3xl"/>
+    <div class="m-4 lg:m-6 overflow-x-hidden">
+        <video src="/media/backgrounds/heroBackground1.mp4" autoplay muted loop playsinline class="object-cover h-[95vh] w-full rounded-3xl"/>
+
+        <div class="absolute z-10 text-center text-white top-10 left-14">
+            <h1 class="font-bold text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl italic">NeuroClip</h1>
+        </div>
 
         <div class="absolute z-10 flex flex-col gap-4 text-left px-8 text-white bottom-40 left-8">
             <h1 class="font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-7xl 2xl:text-9xl">Read Less, Learn More</h1>
@@ -8,19 +12,26 @@
         </div>
 
         <div class="absolute inset-0 z-10 flex text-white px-16 py-12 items-end">
-            <button class="text-white italic font-semibold rounded-full text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl flex items-center gap-4">Get started
-                <Icon name="material-symbols:arrow-forward"></Icon>
-            </button>
+            <NuxtLink to="/app">
+                <button class="text-white italic font-semibold rounded-full text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl flex items-center gap-4">Get started
+                    <Icon name="material-symbols:arrow-forward"></Icon>
+                </button>
+            </NuxtLink>
+
         </div>
 
-        <div class="h-fit flex flex-row gap-4 my-14">
+        <div class="h-fit flex flex-col md:flex-row  gap-4 mt-14">
             <div class="card">
-                <h1>Tired of reading long articles?</h1>
-                <p>We can summarize any article in seconds. Perfect for busy professionals and students who need to process information quickly and efficiently.</p>
+                <h1 class="font-bold  text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl">Tired of reading long articles?</h1>
+                <p class="italic text-sm lg:text-lg 2xl:text-xl">We can summarize any article in seconds. Perfect for busy professionals and students who need to process information quickly and efficiently.</p>
+            </div>
+            <div class="card">
+                <h1 class="font-bold  text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl">Stop Drowning in Information</h1>
+                <p class="italic text-sm lg:text-lg 2xl:text-xl">Tired of bookmarking articles you'll never read? End the endless scroll of overwhelming content that leaves you feeling behind. Our AI cuts through the noise to deliver only what matters, so you can finally tackle that reading list without the guilt or time pressure.</p>
             </div>
         </div>
 
-        <div class="h-fit py-12 lg:py-32">
+        <div class="h-fit py-10">
             <h1 class="mx-auto text-center font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl flex items-center justify-center pb-4 lg:pb-10">
                 See it in action!
             </h1>
