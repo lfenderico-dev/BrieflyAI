@@ -22,12 +22,16 @@
 
         <div class="h-fit flex flex-col md:flex-row  gap-4 mt-14">
             <div class="card">
-                <h1 class="font-bold  text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl">Tired of reading long articles?</h1>
-                <p class="italic text-sm lg:text-lg 2xl:text-xl">We can summarize any article in seconds. Perfect for busy professionals and students who need to process information quickly and efficiently.</p>
+                <h1 class="font-bold  text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl">
+                    <Icon name="clarity:child-arrow-line"></Icon>
+                    Tired of reading long articles?</h1>
+                <p class="italic text-sm lg:text-lg 2xl:text-xl xl:px-12 2xl:px-16">We can summarize any article in seconds. Perfect for busy professionals and students who need to process information quickly and efficiently.</p>
             </div>
             <div class="card">
-                <h1 class="font-bold  text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl">Stop Drowning in Information</h1>
-                <p class="italic text-sm lg:text-lg 2xl:text-xl">Tired of bookmarking articles you'll never read? End the endless scroll of overwhelming content that leaves you feeling behind. Our AI cuts through the noise to deliver only what matters, so you can finally tackle that reading list without the guilt or time pressure.</p>
+                <h1 class="font-bold  text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl">
+                    <Icon name="clarity:child-arrow-line"></Icon>
+                    Stop Drowning in Information</h1>
+                <p class="italic text-sm lg:text-lg 2xl:text-xl xl:px-12 2xl:px-16">Tired of bookmarking articles you'll never read? End the endless scroll of overwhelming content that leaves you feeling behind. Our AI cuts through the noise to deliver only what matters, so you can finally tackle that reading list without the guilt or time pressure.</p>
             </div>
         </div>
 
