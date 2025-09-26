@@ -4,13 +4,23 @@ from bs4 import BeautifulSoup
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
 def scrapeUrl(url:str):
-    webpage = requests.get(url)
+    webpage = requests.get(url, verify=False)
     scrapedWebpage = BeautifulSoup(webpage.content, "html.parser")
     
     headingsContent = [heading.get_text() for heading in scrapedWebpage.find_all(["h1", "h2"])]
@@ -48,41 +58,44 @@ def scrapeUrl(url:str):
 
 def AIsummarization(content:str):
     prompt = f"""
-    Please analyze the following scraped web content and create a comprehensive summary following these guidelines:
+    PROMPT:
+    You are an expert content summarizer and information filter. Your task is to take the following scraped web content, identify only the most relevant and valuable information, and create a clear, comprehensive summary in plain text format.
+    
+    Requirements:
+    - Use only plain text with no markdown formatting, special characters, or symbols
+    - No hashtags, asterisks, bullets, or other formatting marks
+    - Write in complete sentences and paragraphs
+    - Summarize the key information in a logical, easy-to-follow structure
+    - Explain complex concepts in simple terms
+    - Keep the tone neutral and informative
 
-    **CONTENT PROCESSING:**
-    1. Clean and format the raw text by:
-    - Removing excessive whitespace, line breaks (\n), and formatting artifacts
-    - Eliminating navigation menus, footer content, ads, and boilerplate text
-    - Filtering out repetitive elements and spam content
-    - Preserving only the core informational content
+    RELEVANCE FILTERING - INCLUDE ONLY:
+    - Core subject matter and main themes
+    - Factual information, data, and verified claims
+    - Key insights, conclusions, and actionable takeaways
+    - Important context that aids understanding
+    - Significant developments, changes, or updates
+    - Expert opinions and authoritative statements
 
-    **SUMMARIZATION REQUIREMENTS:**
-    2. Create a structured summary that includes:
-    - **Main Topic**: A clear statement of what the content is about
-    - **Key Points**: 3-5 most important insights or findings (use bullet points)
-    - **Supporting Details**: Relevant context, data, or examples that add value
-    - **Conclusion/Takeaway**: The primary message or actionable insight
+    RELEVANCE FILTERING - EXCLUDE:
+    - Advertisements, promotional content, and marketing fluff
+    - Navigation elements, headers, footers, and website boilerplate
+    - Repetitive information or redundant statements
+    - Tangential topics that don't support the main subject
+    - Personal anecdotes unless directly illustrative of key points
+    - Technical metadata, timestamps, and formatting artifacts
+    - Social media widgets, comments sections, and user-generated noise
 
-    **QUALITY STANDARDS:**
-    3. Ensure your summary is:
-    - **Concise**: Reduce original content by 70-80% while retaining essential information
-    - **Coherent**: Use clear, professional language with smooth transitions
-    - **Accurate**: Stay faithful to the original meaning and facts
-    - **Objective**: Present information neutrally without adding personal opinions
-    - **Actionable**: Highlight practical insights or implications when present
+    Your summary should include:
+    - The main topic or subject matter
+    - Key points and important details
+    - Any significant data, findings, or conclusions
+    - Context that helps readers understand the significance
 
-    **FORMAT:**
-    4. Present the final summary in clean, readable plain text format with:
-    - Proper paragraph structure
-    - Clear section headings
-    - Bullet points for lists
-    - No unnecessary formatting characters or symbols
-
-    **CONTENT TO ANALYZE:**
-    {content}
-
-    Please provide only the cleaned and summarized content without any meta-commentary about the process.
+    Content to summarize:{content}
+    
+    Instructions:
+    First, scan the entire content to identify the core subject and filter out irrelevant material. Then provide a well-organized summary that captures only the essential, valuable information while making it accessible to a general audience. Focus on what truly matters to understanding the topic, discarding noise and filler content.
     """
     
     client = OpenAI(
@@ -103,8 +116,8 @@ def AIsummarization(content:str):
     return completion.choices[0].message.content
 
 @app.post("/summaryGeneration")
-def generatesummary(url:str):
-    scrapedData = scrapeUrl(url)
+def generatesummary(url:dict):
+    scrapedData = scrapeUrl(url["url"])
     summary = AIsummarization(scrapedData["content"])
     title = scrapedData["title"]
     return {"Summary": summary, "Title": title} 
