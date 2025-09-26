@@ -2,17 +2,25 @@ from fastapi import FastAPI
 import requests
 from bs4 import BeautifulSoup
 from openai import OpenAI
+import os
+from dotenv import load_dotenv
 
 app = FastAPI()
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
 
 def scrapeUrl(url:str):
     webpage = requests.get(url)
     scrapedWebpage = BeautifulSoup(webpage.content, "html.parser")
     
-    title = scrapedWebpage.find("title").text
     headingsContent = [heading.get_text() for heading in scrapedWebpage.find_all(["h1", "h2"])]
     paragraphContent = [p.get_text() for p in scrapedWebpage.find_all("p")]
     divContent = [div.get_text() for div in scrapedWebpage.find_all("div")]
+    
+    title = scrapedWebpage.find("title").text
+    main_section = [main.get_text() for main in scrapedWebpage.find_all("main")]
+    section_section = [section.get_text() for section in scrapedWebpage.find_all("section")]
+    article_section = [article.get_text() for article in scrapedWebpage.find_all("article")]
 
     def cleanContent(contentList):
         cleanedList = []
@@ -24,12 +32,17 @@ def scrapeUrl(url:str):
     clearedHeadingsContent = cleanContent(headingsContent)
     clearedParagraphContent = cleanContent(paragraphContent)
     clearedDivContent = cleanContent(divContent)
-
-    result = "".join(clearedHeadingsContent + clearedParagraphContent + clearedDivContent)
+    
+    clearedMainSection = cleanContent(main_section)
+    clearedSectionSection = cleanContent(section_section)
+    clearedArticleSection = cleanContent(article_section)
+    
+    
+    result = "".join(clearedMainSection + clearedSectionSection + clearedArticleSection + clearedHeadingsContent + clearedParagraphContent + clearedDivContent)
 
     return result
 
-def AIsummarization(userKey:str, content:str):
+def AIsummarization(content:str):
     prompt = f"""
     Please analyze the following scraped web content and create a comprehensive summary following these guidelines:
 
@@ -70,7 +83,7 @@ def AIsummarization(userKey:str, content:str):
     
     client = OpenAI(
         base_url="https://openrouter.ai/api/v1",
-        api_key= userKey,
+        api_key= API_KEY,
     )
 
     completion = client.chat.completions.create(
@@ -86,7 +99,7 @@ def AIsummarization(userKey:str, content:str):
     return completion.choices[0].message.content
 
 @app.post("/summaryGeneration")
-def generatesummary(userKey:str, url:str):
+def generatesummary(url:str):
     scrapedData = scrapeUrl(url)
-    summary = AIsummarization(userKey, scrapedData)
+    summary = AIsummarization(scrapedData)
     return {"Summary": summary}
