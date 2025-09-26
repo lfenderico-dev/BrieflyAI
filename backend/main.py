@@ -17,10 +17,11 @@ def scrapeUrl(url:str):
     paragraphContent = [p.get_text() for p in scrapedWebpage.find_all("p")]
     divContent = [div.get_text() for div in scrapedWebpage.find_all("div")]
     
-    title = scrapedWebpage.find("title").text
     main_section = [main.get_text() for main in scrapedWebpage.find_all("main")]
     section_section = [section.get_text() for section in scrapedWebpage.find_all("section")]
     article_section = [article.get_text() for article in scrapedWebpage.find_all("article")]
+    
+    title = scrapedWebpage.find("title").text
 
     def cleanContent(contentList):
         cleanedList = []
@@ -32,15 +33,18 @@ def scrapeUrl(url:str):
     clearedHeadingsContent = cleanContent(headingsContent)
     clearedParagraphContent = cleanContent(paragraphContent)
     clearedDivContent = cleanContent(divContent)
-    
     clearedMainSection = cleanContent(main_section)
     clearedSectionSection = cleanContent(section_section)
     clearedArticleSection = cleanContent(article_section)
     
     
+    
     result = "".join(clearedMainSection + clearedSectionSection + clearedArticleSection + clearedHeadingsContent + clearedParagraphContent + clearedDivContent)
 
-    return result
+    return {
+        "content": result,
+        "title": title
+    }
 
 def AIsummarization(content:str):
     prompt = f"""
@@ -101,5 +105,6 @@ def AIsummarization(content:str):
 @app.post("/summaryGeneration")
 def generatesummary(url:str):
     scrapedData = scrapeUrl(url)
-    summary = AIsummarization(scrapedData)
-    return {"Summary": summary}
+    summary = AIsummarization(scrapedData["content"])
+    title = scrapedData["title"]
+    return {"Summary": summary, "Title": title} 
