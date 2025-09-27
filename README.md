@@ -14,6 +14,6 @@ Neuroclip is a website that allows you to get a summary of a web page providing 
 The model that has been provided is: xAI: Grok 4 Fast (free)
 
 ## Demo:
-[![Video demo](/frontend/public/media/backgrounds/demo.mp4)]
+[Video demo](/frontend/public/media/backgrounds/demo.mp4)
 
 Thank you for your attention.
