@@ -82,7 +82,7 @@ async function sendUrl() {
     if (url.value != ''){
         isLoading.value = false
         try {
-            const response = await fetch('http://127.0.0.1:8000/summaryGeneration', {
+            const response = await fetch('https://neuroclip-bdjb.onrender.com//summaryGeneration', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
