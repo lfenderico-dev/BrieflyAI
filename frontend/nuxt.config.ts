@@ -2,5 +2,13 @@
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', '@nuxt/icon'],
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+  app: {
+    head:{
+      title: 'NeuroClip',
+      link: [
+        {rel:'icon', type:'image/x-icon', href:'/media/favicon/NeuroClip.png'}
+      ]
+    }
+  }
 })

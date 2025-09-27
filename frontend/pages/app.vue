@@ -1,10 +1,32 @@
 <template>
-    <div class="overflow-x-hidden pb-10">
+<Transition
+    leave-active-class="transition-all duration-1000 ease-in-out"
+    leave-from-class="opacity-100"
+    leave-to-class="opacity-0"
+>
+    <div v-if="pageLoading" class="fixed inset-0 z-50 bg-black">
+    <video 
+        src="/media/backgrounds/loadingvideo.mp4" 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        class="w-full h-full object-cover"
+    />
+    </div>
+</Transition>
+
+<Transition
+    enter-active-class="transition-all duration-800 ease-out"
+    enter-from-class="opacity-0"
+    enter-to-class="opacity-100"
+>
+    <div v-if="!pageLoading" class="overflow-x-hidden pb-10">
         <video src="/media/backgrounds/landscapeapp.mp4" autoplay muted loop playsinline class="object-cover h-[30vh] lg:h-[50vh]  w-full rounded-b-3xl"/>
 
         <router-link to="/">
             <div class="absolute z-10 text-center text-white top-4 left-4">
-                <Icon name="lets-icons:back" class="font-bold text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl italic"></Icon>
+                <Icon name="lets-icons:back" class="font-bold text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl transition-transform duration-700 ease-in-out hover:rotate-[-360deg]"></Icon>
             </div>
         </router-link>
 
@@ -12,8 +34,12 @@
         <div class="m-4 lg:m-6 z-10 -mt-10 lg:-mt-10  flex flex-col">
             <textarea v-model="url"  placeholder="Paste any URL and get an AI-powered summary in seconds!" class="w-full h-[10vh] rounded-lg p-4 focus:outline-none shadow-md shadow-neutral-900 text-center text-md lg:text-lg xl:text-xl 2xl:text-2xl resize-none"></textarea>
 
-            <button @click="sendUrl"   class="mt-6 mb-8 md:mb-12  2xl:mb-24 button w-fit mx-auto text-md md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl bg-neutral-900">
-                Get the summary!
+            <button class="btn mt-6 mb-8 md:mb-12  2xl:mb-24 w-fit mx-auto" @click="sendUrl">
+                <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+                <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+                </svg>
+
+                <span class="text">Generate</span>
             </button>
 
             <div class="card" v-if="isLoading == true">
@@ -36,15 +62,21 @@
             </div>
         </div>
     </div>
-
-
+</Transition>
 </template>
 
 <script setup lang="ts">
+const pageLoading = ref(true)
 let isLoading = ref<boolean | null>(null)
 const url = ref<string>('')
 const summary = ref<string>('')
 const title = ref<string>('')
+
+onMounted(() => {
+setTimeout(() => {
+    pageLoading.value = false
+}, 3000)
+})
 
 async function sendUrl() {
     if (url.value != ''){
@@ -182,5 +214,50 @@ async function sendUrl() {
         opacity: 0.7;
         transform: translateY(0);
         }
+    }
+
+
+
+        .btn {
+        border: none;
+        width: 15em;
+        height: 5em;
+        border-radius: 3em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        background: #1C1A1C;
+        cursor: pointer;
+        transition: all 450ms ease-in-out;
+    }
+
+    .sparkle {
+        fill: #AAAAAA;
+        transition: all 800ms ease;
+    }
+
+    .text {
+        font-weight: 600;
+        color: #AAAAAA;
+        font-size: medium;
+    }
+
+    .btn:hover {
+        background: linear-gradient(0deg,#A47CF3,#231F77);
+        box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+        inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+        0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+        0px 0px 180px 0px #231F77;
+        transform: translateY(-2px);
+    }
+
+    .btn:hover .text {
+        color: white;
+    }
+
+    .btn:hover .sparkle {
+        fill: white;
+        transform: scale(1.2);
     }
 </style>
