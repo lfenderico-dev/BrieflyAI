@@ -6,8 +6,7 @@ content: [
 theme: {
     extend: {
     colors: {
-        'accent': 'var(--color-accent)',
-        'accent2': 'var(--color-accent2)',
+
     }
     },
 },

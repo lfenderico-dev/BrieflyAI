@@ -1,83 +1,134 @@
 <template>
-<Transition
-    leave-active-class="transition-all duration-1000 ease-in-out"
-    leave-from-class="opacity-100"
-    leave-to-class="opacity-0"
->
-    <div v-if="isLoading" class="fixed inset-0 z-50 bg-black">
-    <video 
-        src="/media/backgrounds/loadingvideo.mp4" 
-        autoplay 
-        muted 
-        loop 
-        playsinline 
-        class="w-full h-full object-cover"
-    />
-    </div>
-</Transition>
+    <div class="mx-[10%]">
+        <div class="bg-neutral-100 rounded-full p-4 w-fit font-bold mx-auto my-4 text-xl">
+            NEUROCLIP
+        </div>
 
-<Transition
-    enter-active-class="transition-all duration-800 ease-out"
-    enter-from-class="opacity-0"
-    enter-to-class="opacity-100"
->
-    <div v-if="!isLoading" class="m-4 lg:m-6 overflow-x-hidden">
-    <video src="/media/backgrounds/heroBackground.mp4" autoplay muted loop playsinline class="object-cover h-[95vh] w-full rounded-3xl"/>
-    <div class="absolute z-10 text-center text-white top-10 left-14">
-        <h1 class="font-bold text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl italic">NeuroClip</h1>
-    </div>
-    <div class="absolute z-10 flex flex-col gap-4 text-left px-8 text-white bottom-40 left-8">
-        <h1 class="font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-7xl 2xl:text-9xl">Read Less, Learn More</h1>
-        <p class="italic text-sm sm:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl w-[70%]">Paste any URL and get an AI-powered summary in seconds. Perfect for researchers, students, and professionals who need to process information quickly and efficiently.</p>
-    </div>
-    <div class="absolute inset-0 z-10 flex text-white px-16 py-12 items-end">
-        <NuxtLink to="/app">
-        <button class="text-white italic font-semibold rounded-full text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl flex items-center gap-4">Get started
-            <Icon name="material-symbols:arrow-forward"></Icon>
-        </button>
-        </NuxtLink>
-    </div>
-    <div class="h-fit flex flex-col md:flex-row gap-4 mt-14">
-        <div class="card md:w-[50%]">
-        <div class="flex flex-row gap-2">
-            <Icon name="clarity:child-arrow-line" class="text-7xl flex items-start h-10"></Icon>
-            <div class="flex flex-col gap-2">
-            <h1 class="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl text-neutral-900">
-                Tired reading long articles?</h1>
-            <p class="italic text-sm lg:text-lg 2xl:text-xl xl:px-12 2xl:px-16">We can summarize any article in seconds. Perfect for busy professionals and students who need to process information quickly and efficiently.</p>
+        <div class="h-fit mt-14">
+            <h1 class="header1">AI-powered summaries to optimize your researches!</h1>
+            <p class="paragraph text-center my-6 mx-2">From long websites to short summary - Use AI to optimize your workflow</p>
+
+            <div class="flex flex-col gap-4 justify-center items-center">
+                <NuxtLink to="/app" class="button text-white bg-black text-xl">Start now</NuxtLink>
+                <button class="button text-lg">Play Demo</button>
+            </div>
+
+            <img src=""  class="w-full h-[50%]">
+        </div>
+
+        <div class="h-fit mt-20">
+            <h1 class="header1 my-16">Optimize your time</h1>
+            <div class="flex flex-col gap-20">
+                <div class="flex flex-col gap-2">
+                    <div class="wireframe">
+                        <img src="" class="object-contain">
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <h2 class="header2 text-left">AI creates summary, you save time</h2>
+                        <p class="paragraph text-left">Just paste the URL and get a summary in seconds. No manual work - just quick and effective summaries for your learning and documenting.</p>
+                        <NuxtLink to="/app"  class="button flex justify-start w-fit text-lg">Try it now!</NuxtLink>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <div class="wireframe">
+                        <img src="" class="object-contain">
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <h2 class="header2 text-left">Save and Organize Your Summaries</h2>
+                        <p class="paragraph text-left">Keep all your summaries in one place. Search through your history and access them anytime. Build your personal knowledge library effortlessly.</p>
+                        <NuxtLink to="/app"  class="button flex justify-start w-fit text-lg">Try it now!</NuxtLink>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <div class="wireframe">
+                        <img src="" class="object-contain">
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <h2 class="header2 text-left">Multi-Language Support</h2>
+                        <p class="paragraph text-left">Summarize content in any language and get results in your preferred language. Break language barriers and access global content effortlessly.</p>
+                        <NuxtLink to="/app"  class="button flex justify-start w-fit text-lg">Try it now!</NuxtLink>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <div class="wireframe">
+                        <img src="" class="object-contain">
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <h2 class="header2 text-left">Export and Share Anywhere</h2>
+                        <p class="paragraph text-left">Download your summaries as PDF, copy to clipboard, or share directly via link. Take your summaries wherever you need them - docs, notes, emails, or presentations.</p>
+                        <NuxtLink to="/app"  class="button flex justify-start w-fit text-lg">Try it now!</NuxtLink>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div class="h-fit mt-20">
+            <h1 class="header1 my-16 text-left">Made for Students, Content Creators, Busy Professionals</h1>
+
+            <div class="grid grid-cols-1 gap-12">
+                <div class="wireframe h-fit p-8">
+                    <h2 class="header2 text-left">Students & Researchers</h2>
+                    <p class="paragraph text-left">Digest academic papers, articles, and study materials faster. Spend less time reading, more time learning and writing.</p>
+                    <img src="/undraws/undraw_educator.svg" class="mt-12 h-[50%]">
+                </div>
+
+                <div class="wireframe h-fit p-8">
+                    <h2 class="header2 text-left">Content Creators & Marketers</h2>
+                    <p class="paragraph text-left">Stay on top of industry trends and competitor content without the time sink. Gather insights and inspiration efficiently.</p>
+                    <img src="/undraws/undraw_content-creator.svg" class="mt-12 h-[50%]">
+                </div>
+
+                <div class="wireframe h-fit p-8">
+                    <h2 class="header2 text-left">Busy Professionals</h2>
+                    <p class="paragraph text-left">Cut through information overload. Get briefed on reports, news, and documentation without sacrificing your productivity.</p>
+                    <img src="/undraws/undraw_business-man.svg" class="mt-12 h-[50%]">
+                </div>
+            </div>
+
         </div>
-        <div class="card md:w-[50%]">
-        <div class="flex flex-row gap-2">
-            <Icon name="clarity:child-arrow-line" class="text-9xl flex items-start h-10"></Icon>
-            <div class="flex flex-col gap-2">
-            <h1 class="font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl text-neutral-900">
-                Stop Drowning in Information</h1>
-            <p class="italic text-sm lg:text-lg 2xl:text-xl xl:px-12 2xl:px-16">Tired of bookmarking articles you'll never read? End the endless scroll of overwhelming content that leaves you feeling behind. Our AI cuts through the noise to deliver only what matters, so you can finally tackle that reading list without the guilt or time pressure.</p>
+
+        <div class="h-fit mt-20">
+            <h1 class="header1 text-left my-16">Get started in 3 steps:</h1>
+
+            <div class="grid grid-cols-1 gap-12">
+                <div class="flex flex-col gap-4">
+                    <div class="wireframe w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold">1</div>
+                    <h2 class="header2 text-left">Sign up and get started</h2>
+                    <p class="paragraph text-left">Sign up in seconds and start using NeuroClip for free. Get instant access to AI-powered quizzes without any commitments or setup.</p>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <div class="wireframe w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold">2</div>
+                    <h2 class="header2 text-left">Summarize your website</h2>
+                    <p class="paragraph text-left">Use AI to summarize your website in seconds to make your learning easier.</p>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <div class="wireframe w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold">3</div>
+                    <h2 class="header2 text-left">Start learning</h2>
+                    <p class="paragraph text-left">Start learning everything you want in a easier way, share it with friends or team and enjoy your new optimized life.</p>
+                </div>
+
+                <div class="flex flex-col gap-4 items-start">
+                    <NuxtLink to="/app" class="button text-white bg-black text-xl">Start now</NuxtLink>
+                <button class="button text-lg">Play Demo</button>
+            </div>
             </div>
         </div>
-        </div>
     </div>
-    <div class="h-fit py-10">
-        <h1 class="mx-auto text-center font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl flex items-center justify-center pb-4 lg:pb-10">
-        See it in action!
-        </h1>
-        <video src="/media/backgrounds/demo.mp4" controls muted class="w-full h-auto object-cover rounded-3xl my-10"></video>
-    </div>
-    </div>
-</Transition>
 </template>
 
 <script setup lang="ts">
-const isLoading = ref(true)
 
-onMounted(() => {
-setTimeout(() => {
-    isLoading.value = false
-}, 3000)
-})
 </script>
 
 <style scoped>
+
 </style>
