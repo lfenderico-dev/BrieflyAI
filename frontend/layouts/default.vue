@@ -20,7 +20,6 @@
                             <NuxtLink to="/Help" class="hover:opacity-50 transition-opacity">Help</NuxtLink>
                             <NuxtLink to="/Pricing" class="hover:opacity-50 transition-opacity">Pricing</NuxtLink>
                             <NuxtLink to="/About" class="hover:opacity-50 transition-opacity">About us</NuxtLink>
-                            <NuxtLink to="/FAQ" class="hover:opacity-50 transition-opacity">FAQ</NuxtLink>
                         </div>
                         <div class="flex flex-col gap-4 items-center justify-center">
                             <button class="button bg-white shadow-lg shadow-neutral-900 hover:opacity-75 transition-opacity">LogIn</button>
