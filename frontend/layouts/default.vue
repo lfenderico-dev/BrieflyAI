@@ -3,7 +3,7 @@
         <div class="mx-[10%] mb-20">
             <div class="bg-neutral-100 rounded-full px-4 py-2  w-fit mx-auto my-4">
                 <div class="flex flex-row gap-2 items-center justify-center">
-                    <NuxtLink to="/"  class="font-bold text-xl h-full">NEUROCLIP</NuxtLink>
+                    <NuxtLink to="/"  class="font-bold text-xl h-full">BrieflyAI</NuxtLink>
                     <button @click="menu = !menu" :class="{'bg-neutral-200' : menu == true}"   class="text-4xl h-full flex items-center rounded-full p-2"><Icon name="ic:round-menu"></Icon></button>
                 </div>
 
@@ -16,7 +16,7 @@
                 leave-to-class="opacity-0 -translate-y-4 scale-95"
                 >
                     <div v-if="menu == true" class="absolute top-24 left-1/2 transform -translate-x-1/2 mt-2 bg-neutral-100/80 backdrop-blur-md rounded-3xl z-50 w-48 h-fit p-8 flex flex-col gap-6">
-                        <div class="flex flex-col gap-4 items-center justify-center text-lg">
+                        <div class="flex flex-col gap-4 items-center justify-center text-lg xl:text-xl">
                             <NuxtLink to="/Help" class="hover:opacity-50 transition-opacity">Help</NuxtLink>
                             <NuxtLink to="/Pricing" class="hover:opacity-50 transition-opacity">Pricing</NuxtLink>
                             <NuxtLink to="/About" class="hover:opacity-50 transition-opacity">About us</NuxtLink>
@@ -40,13 +40,11 @@
                 <NuxtLink to="/app" class="button text-neutral-900 bg-white text-xl">Start now</NuxtLink>
                 <button class="button text-lg">Play Demo</button>
             </div>
-            <img src="">
 
             <div class="flex flex-col justify-start items-start gap-4 text-lg">
                 <NuxtLink to="/Help" class="hover:opacity-50 transition-opacity">Help</NuxtLink>
                 <NuxtLink to="/Pricing" class="hover:opacity-50 transition-opacity">Pricing</NuxtLink>
                 <NuxtLink to="/About" class="hover:opacity-50 transition-opacity">About us</NuxtLink>
-                <NuxtLink to="/FAQ" class="hover:opacity-50 transition-opacity">FAQ</NuxtLink>
             </div>
 
             <div class="flex flex-row gap-8 justify-start items-start  text-4xl">
