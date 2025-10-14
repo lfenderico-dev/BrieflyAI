@@ -5,9 +5,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head:{
-      title: 'NeuroClip',
+      title: 'BrieflyAI',
       link: [
-        {rel:'icon', type:'image/x-icon', href:'/media/favicon/NeuroClip.png'}
+        {rel:'icon', type:'image/x-icon', href:'/media/favicon/BrieflyAI.png'}
       ]
     }
   }

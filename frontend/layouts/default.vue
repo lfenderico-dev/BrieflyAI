@@ -17,8 +17,8 @@
                 >
                     <div v-if="menu == true" class="absolute top-24 left-1/2 transform -translate-x-1/2 mt-2 bg-neutral-100/80 backdrop-blur-md rounded-3xl z-50 w-48 h-fit p-8 flex flex-col gap-6">
                         <div class="flex flex-col gap-4 items-center justify-center text-lg xl:text-xl">
-                            <NuxtLink to="/Help" class="hover:opacity-50 transition-opacity">Help</NuxtLink>
-                            <NuxtLink to="/Pricing" class="hover:opacity-50 transition-opacity">Pricing</NuxtLink>
+                            <!-- <NuxtLink to="/Help" class="hover:opacity-50 transition-opacity">Help</NuxtLink>
+                            <NuxtLink to="/Pricing" class="hover:opacity-50 transition-opacity">Pricing</NuxtLink> -->
                             <NuxtLink to="/About" class="hover:opacity-50 transition-opacity">About us</NuxtLink>
                         </div>
                         <div class="flex flex-col gap-4 items-center justify-center">
@@ -35,7 +35,7 @@
         </div>
 
         <footer class="mt-20 bg-neutral-900 text-white py-8 px-4  flex flex-col gap-8">
-            <h1 class="header1">Create AI-powered summaries with NeuroClip!</h1>
+            <h1 class="header1">Create AI-powered summaries with BrieflyAI!</h1>
             <div class="flex flex-row gap-4 justify-center items-center">
                 <NuxtLink to="/app" class="button text-neutral-900 bg-white text-xl">Start now</NuxtLink>
                 <button class="button text-lg">Play Demo</button>
@@ -57,7 +57,7 @@
             <div class="flex flex-col gap-2 opacity-50">
                 <NuxtLink to="/Help">Terms of Service</NuxtLink>
                 <NuxtLink to="/Help">Privacy Policy</NuxtLink>
-                <p>@NeuroClip</p>
+                <p>@BrieflyAI</p>
             </div>
         </footer>
     </div>

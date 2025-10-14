@@ -4,7 +4,7 @@
             <h1 class="header1">AI-powered summaries to optimize your researches!</h1>
             <p class="paragraph text-center my-6 mx-2">From long websites to short summary - Use AI to optimize your workflow</p>
 
-            <div class="flex flex-col gap-4 justify-center items-center">
+            <div class="flex flex-col sm:flex-row  gap-4 justify-center items-center">
                 <NuxtLink to="/app" class="button text-white bg-neutral-900 text-xl">Start now</NuxtLink>
                 <button class="button text-lg">Play Demo</button>
             </div>
@@ -58,7 +58,7 @@
                 <div class="flex flex-col gap-4">
                     <div class="wireframe w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold">1</div>
                     <h2 class="header2 text-left">Sign up and get started</h2>
-                    <p class="paragraph text-left">Sign up in seconds and start using NeuroClip for free. Get instant access to AI-powered quizzes without any commitments or setup.</p>
+                    <p class="paragraph text-left">Sign up in seconds and start using BrieflyAI for free. Get instant access to AI-powered quizzes without any commitments or setup.</p>
                 </div>
 
                 <div class="flex flex-col gap-4">

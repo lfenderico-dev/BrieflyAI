@@ -3,7 +3,7 @@
         <div class="flex flex-col">
             <div class="wireframe text-center w-fit mx-auto text-xl">Help</div>
             <h1 class="header1">Help, Guides and Tips</h1>
-            <p class="paragraph text-center">Learn everything you need to know to get more from NeuroClip</p>
+            <p class="paragraph text-center">Learn everything you need to know to get more from BrieflyAI</p>
         </div>
 
         <div class="grid grid-cols-1 gap-14">
