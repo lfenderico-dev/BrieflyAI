@@ -5,8 +5,8 @@
             <p class="paragraph text-center my-6 mx-2">From long websites to short summary - Use AI to optimize your workflow</p>
 
             <div class="flex flex-col sm:flex-row  gap-4 justify-center items-center">
-                <NuxtLink to="/app" class="button text-white bg-neutral-900 text-xl">Start now</NuxtLink>
-                <button class="button text-lg">Play Demo</button>
+                <NuxtLink to="/explaination" class="button text-white bg-neutral-900 text-xl">Read more</NuxtLink>
+                <!--<button class="button text-lg">Play Demo</button>-->
             </div>
 
             <NuxtImg src="/undraws/undraw_knowledge_0ty5.svg"  class="w-full h-[40vh] sm:h-[60vh] lg:h-[75vh]  mx-auto mt-20"/>
@@ -73,10 +73,10 @@
                     <p class="paragraph text-left">Start learning everything you want in a easier way, share it with friends or team and enjoy your new optimized life.</p>
                 </div>
 
-                <div class="flex flex-col sm:flex-row  gap-4 items-start">
-                    <NuxtLink to="/app" class="button text-white bg-neutral-900 text-xl">Start now</NuxtLink>
-                <button class="button text-lg">Play Demo</button>
-            </div>
+                <div class="flex flex-col sm:flex-row  gap-4 justify-start items-start">
+                    <NuxtLink to="/explaination" class="button text-white bg-neutral-900 text-xl">Read more</NuxtLink>
+                    <!--<button class="button text-lg">Play Demo</button>-->
+                </div>
             </div>
         </div>
     </div>

@@ -7,7 +7,7 @@
         <div class="flex flex-col gap-2 lg:w-[50%]">
             <h2 class="header2 text-left">{{ title }}</h2>
             <p class="paragraph text-left">{{ description }}</p>
-            <NuxtLink to="/app"  class="button flex justify-start w-fit text-lg">Try it now!</NuxtLink>
+            <NuxtLink to="/explaination"  class="button flex justify-start w-fit text-lg">Try it now!</NuxtLink>
         </div>
     </div>
 </template>
