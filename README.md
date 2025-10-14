@@ -1,8 +1,8 @@
-# NeuroClip
-Hello! Welcome to NeuroClip project.
+# BrieflyAI
+Hello! Welcome to BrieflyAI project.
 
-## What is NeuroClip?
-Neuroclip is a website that allows you to get a summary of a web page providing its URL.
+## What is BrieflyAI?
+BrieflyAI is a website that allows you to get a summary of a web page providing its URL.
 
 **Workflow**:
 - Get URL.
@@ -12,8 +12,5 @@ Neuroclip is a website that allows you to get a summary of a web page providing 
 - Get the summarization.
 
 The model that has been provided is: xAI: Grok 4 Fast (free)
-
-## Demo:
-[Video demo](/frontend/public/media/backgrounds/demo.mp4)
 
 Thank you for your attention.
