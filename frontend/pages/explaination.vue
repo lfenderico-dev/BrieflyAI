@@ -9,6 +9,12 @@
             <h1 class="header1">How does it work?</h1>
             <p class="paragraph text-center">BrieflyAI takes an URL, scrapes every content of the page and lets AI analyze it. After this AI provides to us a summary of the page with the most important informations in a simpler way, cleaning out any of the techical and boring content and replacing it with explainations that even a 5 years old boy can understand. Beside this BrieflyAI also has its own chatbot you can use to ask questions about the content you found, make notes and even exames simulations, exercises and more.</p>   
         </div>
+
+        <div>
+            <h1 class="header1">Are you in?</h1>
+            <p class="paragraph text-center">Join now to get demo access!</p>
+            <NuxtLink class="button mx-auto" to="/authentication">Sign In</NuxtLink>
+        </div>
     </div>
 </template>
 
