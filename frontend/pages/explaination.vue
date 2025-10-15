@@ -13,7 +13,7 @@
         <div>
             <h1 class="header1">Are you in?</h1>
             <p class="paragraph text-center">Join now to get demo access!</p>
-            <NuxtLink class="button mx-auto" to="/authentication">Sign In</NuxtLink>
+            <NuxtLink class="button flex justify-center items-center" to="/authentication">Sign In</NuxtLink>
         </div>
     </div>
 </template>
